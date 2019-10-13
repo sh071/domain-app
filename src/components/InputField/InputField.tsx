@@ -2,11 +2,11 @@ import React from 'react';
 import './InputField.scss';
 
 const InputField = (props: any) => {
-  const {name, ...rest} = props;
-  
+  const {label, ...rest} = props;
+
   return (
     <div className="input-field">
-        <label>{props.label}</label>
+        <label>{label}</label>
         <input {...rest} />
     </div>
   );
