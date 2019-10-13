@@ -1,20 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, SyntheticEvent } from 'react';
 import './App.scss';
 import InputField from './components/InputField/InputField';
 import SectionHeader from './components/SectionHeader/SectionHeader';
 import ContactCard from './components/ContactCard/ContactCard';
 import FileUpload from './components/FileUpload/FileUpload';
 
-const App: React.FC = () => {
-  const [form, setForm] = useState({givenName: '', lastName: '', house: '', street: '', state: '', photo: ''});
+interface FormType {
+  givenName?: string;
+  lastName?: string;
+  email?: string;
+  phone?: string;
+  house?: string;
+  street?: string;
+  suburb?: string;
+  state?: string;
+  postcode?: string;
+  country?: string;
+  photo?: string;
+}
 
-  const onFormChange = (e: any) => {
+const App: React.FC = () => {
+  const [form, setForm] = useState({});
+
+  const onFormChange = (e: SyntheticEvent) => {
     if(e.target.type !== 'file') {
       setForm({...form, [e.target.name]: e.target.value});
     }
   }
 
-  const getContactInfo = (form: any) => {
+  const getContactInfo = (form: FormType) => {
     return {
         name: `${form.givenName} ${form.lastName}`,
         email: form.email,

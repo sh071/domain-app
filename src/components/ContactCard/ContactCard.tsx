@@ -2,14 +2,29 @@ import React from 'react';
 import './ContactCard.scss';
 import contactAvatar from './contact.png';
 
-const ContactCard = (props: any) => {
-    const contact = props.contact
-    console.log(contact);
+interface ContactCardPropsType {
+    contact: {
+        name?: string;
+        photo?: string;
+        email?: string;
+        phone?: string;
+        address1?: string;
+        suburb?: string;
+        state?: string;
+        postcode?: string;
+        country?: string;
+    }
+}
+
+const ContactCard = (props: ContactCardPropsType) => {
+    const contact = props.contact;
+
   return (
     <div className="contact-card vcard">
+        <div className="card-title">hcard preview</div>
         <div className="card-header">
             <div className="contact-name fn">{contact.name}</div>
-            <img src={contact.photo.length? contact.photo : contactAvatar} className="contact-image photo" alt="contact" />
+            <img src={contact.photo && contact.photo.length? contact.photo : contactAvatar} className="contact-image photo" alt="contact" />
         </div>
         <div className="card-content">
             <div className="content-row">

@@ -2,10 +2,12 @@ import React from 'react';
 import './InputField.scss';
 
 const InputField = (props: any) => {
+  const {name, ...rest} = props;
+  
   return (
     <div className="input-field">
         <label>{props.label}</label>
-        <input name={props.name} type={props.type} />
+        <input {...rest} />
     </div>
   );
 }

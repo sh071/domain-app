@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {SyntheticEvent} from 'react';
 import './FileUpload.scss';
 
-const FileUpload = (props: any) => {
-    const fileSelected = (e: any) => {
+interface FileUploadPropsType {
+    onFileSelected: (url: string) => void;
+    label: string;
+}
+
+const FileUpload = (props: FileUploadPropsType) => {
+    const fileSelected = (e: SyntheticEvent) => {
         props.onFileSelected(window.URL.createObjectURL(e.target.files[0]))
     }
     return (
